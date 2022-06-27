@@ -1,5 +1,7 @@
 package model
 
+import "time"
+
 // import (
 //   "sha/sha256"
 //   "bytes"
@@ -7,16 +9,16 @@ package model
 // )
 
 type Block struct {
-  Timestamp     int64  // 当前时间戳，区块创建时间
+	Timestamp     int64  // 当前时间戳，区块创建时间
 	Data          []byte // 区块实际存储数据
 	PrevBlockHash []byte // 前一个区块哈希值
 	Hash          []byte // 当前区块哈希值
 }
 
 // SetHash
-func (this *Block)SetHash(){
-   // TODO: 补充算法
-   this.Hash=[]byte("xxx")
+func (this *Block) SetHash() {
+	// TODO: 补充算法
+	this.Hash = []byte("xxx")
 }
 
 // SetHash_bitcoin
@@ -28,8 +30,8 @@ func (this *Block)SetHash(){
 // 	b.Hash = hash[:]
 // }
 
-func NewBlock(data string, prevBlockHash []byte)*model.Block{
-  block := &model.Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}}
+func NewBlock(data string, prevBlockHash []byte) *Block {
+	block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}}
 	block.SetHash()
 	return block
 }
